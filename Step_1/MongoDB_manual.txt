@@ -1,0 +1,60 @@
+Step_1. creat folder in CMD
+mkdir C:\MongoDB\data\db
+mkdir C:\MongoDB\log
+mkdir C:\MongoDB\server
+
+Step_2. install MongoDB in C:\MongoDB\server
+Web: https://www.mongodb.com/download-center/community
+
+Step_3. creat empty text named mongo.log in C:\MongoDB\log
+
+Step_4. creat text named mongod.cfg in C:\MongoDB
+dbpath=C:\MongoDB\data\db
+logpath=C:\MongoDB\log\mongo.log
+bind_ip=127.0.0.1
+port=27017
+auth=false
+
+Step_5. execute MongoDB in CMD
+cd C:\MongoDB\server\bin
+mongod.exe -f C:\MongoDB\mongod.cfg
+
+Step_6. execute mongo.exe in C:\MongoDB\server\bin
+
+Step_7. define user in mongo.exe
+use admin
+db.createUser({
+	user:'test',
+	pwd:'test',
+	roles:[{role:'root',db:'admin'}]
+})
+use testdb
+db.createUser({
+	user:'student',
+	pwd:'password',
+	roles:[{role:'readWrite',db:'testdb'}]
+})
+use testdb_py
+db.createUser({
+	user:'student',
+	pwd:'password',
+	roles:[{role:'readWrite',db:'testdb_py'}]
+})
+
+Step_8. close mongo.exe
+
+Step_9. rewrite text named mongod.cfg in C:\MongoDB
+auth=true
+
+Step_10. creat text named mongoup.bat in C:\MongoDB
+@ECHO ON
+cd C:\MongoDB\server\bin
+mongod.exe -f C:\MongoDB\mongod.cfg
+
+Step_11. start mongo.exe
+
+Step_12. creat folder named MongoDB_Compass in CMD
+mkdir C:\MongoDB\MongoDB_Compass
+
+Step_13. install MongoDBCompass in C:\MongoDB\MongoDB_Compass
+Web: https://www.mongodb.com/download-center/compass
