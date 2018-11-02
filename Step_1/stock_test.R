@@ -11,5 +11,5 @@ stock_df <- raw_data$data5 %>% data.frame(.,stringsAsFactors = F)
 colnames(stock_df) <- raw_data$fields5
 stock_df$`漲跌(+/-)` <- stock_df$`漲跌(+/-)` %>% lapply(.,function(t){substr(t,nchar(t)-4,nchar(t)-4)}) %>% unlist()
 
-conn <- mongo(collection = 'stock_R',url = 'mongodb://student:password@127.0.0.1:27017/testdb')
+conn <- mongo(collection = 'stock_R',url = 'mongodb://student:password@127.0.0.1:27017/testdb_R')
 conn$insert(stock_df)
