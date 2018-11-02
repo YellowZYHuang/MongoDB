@@ -24,15 +24,15 @@ Step_6. execute mongo.exe in C:\MongoDB\server\bin
 Step_7. define user in mongo.exe
 use admin
 db.createUser({
-	user:'test',
-	pwd:'test',
+	user:'yellow',
+	pwd:'yellow',
 	roles:[{role:'root',db:'admin'}]
 })
-use testdb
+use testdb_R
 db.createUser({
 	user:'student',
 	pwd:'password',
-	roles:[{role:'readWrite',db:'testdb'}]
+	roles:[{role:'readWrite',db:'testdb_R'}]
 })
 use testdb_py
 db.createUser({
